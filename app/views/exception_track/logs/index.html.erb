@@ -21,8 +21,8 @@
 <% if @logs.blank? %>
   <div class="no-record">No exceptions.</div>
 <% else %>
-  <h1><%= pluralize(@logs.total_count, 'exception') %></h1>
-  <%= paginate @logs %>
+  <h1><%= page_entries_info @logs %></h1>
+  <%= will_paginate @logs %>
 
   <table class="table table-borded tabl">
     <thead>
