@@ -53,7 +53,7 @@ module ExceptionNotifier
       headers << "Controller:  #{parameters["controller"]}##{parameters["action"]}"
       headers << "RequestId:   #{env["action_dispatch.request_id"]}"
       headers << "User-Agent:  #{env["HTTP_USER_AGENT"]}"
-      headers << "Remote IP:   #{env["REMOTE_ADDR"]}"
+      headers << "Remote IP:   #{env["REMOTE_ADDR"] == '127.0.0.1' ? env['HTTP_X_REAL_IP'] : env["REMOTE_ADDR"]}"
       headers << "Language:    #{env["HTTP_ACCEPT_LANGUAGE"]}"
       headers << "Server:      #{Socket.gethostname}"
       headers << "Process:     #{$PROCESS_ID}"
