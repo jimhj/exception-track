@@ -20,10 +20,4 @@ Gem::Specification.new do |s|
 
   s.add_dependency "will_paginate", "~> 4.0.1"
   s.add_dependency "rails", ">= 5.2"
-  s.add_development_dependency "pg", ">= 1"
-  s.add_development_dependency "mocha", ">= 0.13.0"
-  s.add_development_dependency "mock_redis", "~> 0.19.0"
-  s.add_development_dependency "resque", "~> 1.8.0"
-  s.add_development_dependency "sidekiq", ">= 5.0.4"
-  s.add_development_dependency "timecop", "~> 0.9.0"
 end
