@@ -8,8 +8,6 @@ require "exception-track/engine"
 require "exception_notification"
 require "exception_notification/rails"
 
-require "kaminari"
-
 module ExceptionTrack
   class << self
     def config
