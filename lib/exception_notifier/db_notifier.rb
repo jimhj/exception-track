@@ -23,7 +23,7 @@ module ExceptionNotifier
           messages << "\n"
           messages << exception.backtrace
         end
-
+        
         Rails.logger.silence do
           ExceptionTrack::Log.create(title: title[0, 200], body: messages.join("\n"))
         end
@@ -57,6 +57,7 @@ module ExceptionNotifier
       headers << "Language:    #{env["HTTP_ACCEPT_LANGUAGE"]}"
       headers << "Server:      #{Socket.gethostname}"
       headers << "Process:     #{$PROCESS_ID}"
+      headers << "Data:        #{env["exception_notifier.exception_data"]}" unless env["exception_notifier.exception_data"].blank?
 
       headers.join("\n")
     end
