@@ -54,7 +54,7 @@ module ExceptionNotifier
       headers = []
       headers << "Method:      #{env["REQUEST_METHOD"]}"
       headers << "URL:         #{env["REQUEST_URI"]}"
-      headers << "Parameters:\n#{pretty_hash(parameters.except(:controller, :action), 13)}" if env["REQUEST_METHOD"].downcase.to_s != "get"
+      headers << "Parameters:\n#{pretty_hash(parameters.except(:controller, :action), 13)}" if env["REQUEST_METHOD"].to_s.downcase != "get"
       headers << "Controller:  #{parameters["controller"]}##{parameters["action"]}"
       headers << "RequestId:   #{env["action_dispatch.request_id"]}"
       headers << "User-Agent:  #{env["HTTP_USER_AGENT"]}"
