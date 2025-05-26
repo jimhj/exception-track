@@ -42,8 +42,13 @@ module ExceptionNotifier
 
     # Log Request headers from Rack env
     def headers_for_env(env)
-      return "" if env.blank?
-
+      #return "" if env.blank?
+      p "*" * 100
+      P "ENV: #{env}"
+      if env.blank?
+        env = {}
+      end
+      
       parameters = filter_parameters(env)
 
       headers = []
