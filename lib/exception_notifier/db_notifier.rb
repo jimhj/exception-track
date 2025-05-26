@@ -14,7 +14,7 @@ module ExceptionNotifier
       messages = []
 
       ActiveSupport::Notifications.instrument("track.exception_track", title: title) do
-        messages << headers_for_env(opts[:env])
+        messages << headers_for_env(opts[:env], opts[:data])
         messages << ""
         messages << "--------------------------------------------------"
         messages << ""
@@ -41,10 +41,9 @@ module ExceptionNotifier
     end
 
     # Log Request headers from Rack env
-    def headers_for_env(env)
+    def headers_for_env(env, data = {})
       #return "" if env.blank?
-      p "*" * 100
-      p "ENV: #{env}"
+
       if env.blank?
         env = {}
       end
@@ -63,7 +62,7 @@ module ExceptionNotifier
       headers << "Server:      #{Socket.gethostname}"
       headers << "Process:     #{$PROCESS_ID}"
       headers << "Data:        #{env["exception_notifier.exception_data"]}" unless env["exception_notifier.exception_data"].blank?
-
+      headers << "Data:        #{data}" unless data.blank?
       headers.join("\n")
     end
 
