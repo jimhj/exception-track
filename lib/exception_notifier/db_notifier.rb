@@ -44,7 +44,7 @@ module ExceptionNotifier
     def headers_for_env(env)
       #return "" if env.blank?
       p "*" * 100
-      P "ENV: #{env}"
+      p "ENV: #{env}"
       if env.blank?
         env = {}
       end
